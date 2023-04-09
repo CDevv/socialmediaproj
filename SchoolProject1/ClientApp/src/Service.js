@@ -12,7 +12,7 @@ export function getData() {
         .then(response => response.json())
 }
 
-export function addData(title) {
+export function addData(title, text) {
     return fetch(URL, {
         method: 'POST',
         headers: {
@@ -20,7 +20,7 @@ export function addData(title) {
             'x-apikey': KEY
         },
         body: JSON.stringify({
-            title
+            title, text
         })
     })
         .then(response => response.json())

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
-import { getData } from './Service';
+import { getData } from '../Service.js';
 
 function PostCard(props) {
     return (
@@ -8,7 +8,7 @@ function PostCard(props) {
             <CardBody>
                 <CardTitle tag="h5">{props.title}</CardTitle>
                 <CardText>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                    {props.text}
                 </CardText>
                 <Button color="primary">Like Button</Button>
             </CardBody>
@@ -20,13 +20,14 @@ export class Feed extends Component {
     state = {
         posts: [
             {
-                title: "Shithead"
+                title: "Shithead",
+                text: "Some quick example text to build on the card title and make up the bulk of the card's content."
             }
         ]
     };
 
     componentDidMount() {
-        getData().then(posts => this.setState({{posts}}))
+        getData().then(posts => this.setState({posts}));
     }
 
     render() {
@@ -37,7 +38,7 @@ export class Feed extends Component {
             }}>
                 <PostCard title='Post'></PostCard>
                 {this.state.posts.map(p => 
-                    <PostCard title={p.title}></PostCard>
+                    <PostCard title={p.title} text={p.text}></PostCard>
                 )}
             </div>
         );
