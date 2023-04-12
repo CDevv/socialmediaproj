@@ -12,7 +12,18 @@ export function getData() {
         .then(response => response.json())
 }
 
-export function addData(title, text) {
+export function getPost(id) {
+    return fetch(`${URL}/${id}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'x-apikey': KEY
+        }
+    })
+        .then(response => response.json())
+}
+
+export function addData(title, text, date) {
     return fetch(URL, {
         method: 'POST',
         headers: {
@@ -20,7 +31,7 @@ export function addData(title, text) {
             'x-apikey': KEY
         },
         body: JSON.stringify({
-            title, text
+            title, text, date
         })
     })
         .then(response => response.json())

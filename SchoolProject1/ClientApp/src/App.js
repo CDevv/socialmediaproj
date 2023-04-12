@@ -4,6 +4,8 @@ import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
 import './custom.css';
 
+import { ViewPost } from './components/ViewPost';
+
 export default class App extends Component {
   static displayName = App.name;
 
@@ -11,10 +13,12 @@ export default class App extends Component {
     return (
       <Layout>
         <Routes>
+
           {AppRoutes.map((route, index) => {
             const { element, ...rest } = route;
             return <Route key={index} {...rest} element={element} />;
           })}
+          
         </Routes>
       </Layout>
     );

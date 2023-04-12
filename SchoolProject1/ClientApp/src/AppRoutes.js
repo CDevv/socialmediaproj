@@ -3,6 +3,8 @@ import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import { Feed } from "./components/Feed.js";
 import { MakePost } from "./components/MakePost.js";
+import { ViewPost } from "./components/ViewPost";
+import { PostData } from "./components/PostData.js";
 
 const AppRoutes = [
   {
@@ -24,6 +26,10 @@ const AppRoutes = [
   {
     path: '/submit',
     element: <MakePost />
+  },
+  {
+    path: `/post/:postId`,
+    element: <PostData />
   }
 ];
 

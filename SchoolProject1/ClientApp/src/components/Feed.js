@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
 import { getData } from '../Service.js';
+import { useNavigate } from 'react-router-dom';
 
 function PostCard(props) {
     return (
@@ -10,7 +11,7 @@ function PostCard(props) {
                 <CardText>
                     {props.text}
                 </CardText>
-                <Button color="primary">Like Button</Button>
+                <Button color="primary" onClick={useNavigate(`/post/${props._id}`)}>See post</Button>
             </CardBody>
         </Card>
     );
@@ -19,10 +20,7 @@ function PostCard(props) {
 export class Feed extends Component {
     state = {
         posts: [
-            {
-                title: "Shithead",
-                text: "Some quick example text to build on the card title and make up the bulk of the card's content."
-            }
+            
         ]
     };
 
@@ -35,8 +33,8 @@ export class Feed extends Component {
             <div style={{
                 display: 'flex',
                 justifyContent: 'center',
+                direction: 'column'
             }}>
-                <PostCard title='Post'></PostCard>
                 {this.state.posts.map(p => 
                     <PostCard title={p.title} text={p.text}></PostCard>
                 )}

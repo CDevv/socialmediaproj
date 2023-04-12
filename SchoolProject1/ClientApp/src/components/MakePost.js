@@ -5,7 +5,8 @@ import { addData } from '../Service.js';
 export class MakePost extends Component {
     state = {
         title: "Post Title",
-        text: ""
+        text: "",
+        date: Date.now()
     };
 
     changeTitle = (value) => {
@@ -17,7 +18,7 @@ export class MakePost extends Component {
     };
 
     submitPost = () => {
-        addData(this.state.title, this.state.text);
+        addData(this.state.title, this.state.text, this.state.date);
     };
 
     render() {
