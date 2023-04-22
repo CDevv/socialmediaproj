@@ -29,7 +29,7 @@ const AppRoutes = [
   },
   {
     path: `/post/:postId`,
-    element: <PostData />
+    element: <ViewPost />
   }
 ];
 

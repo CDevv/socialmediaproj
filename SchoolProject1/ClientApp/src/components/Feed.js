@@ -4,6 +4,7 @@ import { getData } from '../Service.js';
 import { useNavigate } from 'react-router-dom';
 
 function PostCard(props) {
+    const path = `/post/${props.postId}`
     return (
         <Card style={{ width: '18rem' }}>
             <CardBody>
@@ -11,7 +12,7 @@ function PostCard(props) {
                 <CardText>
                     {props.text}
                 </CardText>
-                <Button color="primary" onClick={useNavigate(`/post/${props._id}`)}>See post</Button>
+                <Button color="primary" href={path} tag="a" >See post</Button>
             </CardBody>
         </Card>
     );
@@ -36,7 +37,7 @@ export class Feed extends Component {
                 direction: 'column'
             }}>
                 {this.state.posts.map(p => 
-                    <PostCard title={p.title} text={p.text}></PostCard>
+                    <PostCard title={p.title} text={p.text} postId={p._id}></PostCard>
                 )}
             </div>
         );
