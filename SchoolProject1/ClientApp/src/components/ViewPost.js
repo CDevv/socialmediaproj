@@ -10,6 +10,8 @@ export class ViewPost extends Component {
         text: "Post Text",
         date: Date.now(),
         dateFormatted: "",
+        dateFromNow: "",
+        tooltipOpen: false,
     }
 
     async componentDidMount() {
@@ -22,12 +24,13 @@ export class ViewPost extends Component {
             title: p.title,
             text: p.text,
             date: p.date,
-            dateFormatted: moment(p.date).format("dddd, MMMM Do YYYY, h:mm a")
+            dateFormatted: moment(p.date).format("dddd, MMMM Do YYYY, h:mm a"),
+            dateFromNow: moment(p.date).fromNow()
         }));
     }
 
     toggleTooltip = () => {
-
+        this.setState({tooltipOpen: !this.state.tooltipOpen})
     };
 
     render() {
@@ -41,8 +44,10 @@ export class ViewPost extends Component {
                         </CardText>
                     </CardBody>
                     <CardFooter>
-                        
-                        {this.state.dateFormatted}
+                        <p>This was posted <span id="ToolTipExample">{this.state.dateFromNow}</span></p>
+                        <Tooltip placement="bottom" isOpen={this.state.tooltipOpen} target="ToolTipExample" toggle={this.toggleTooltip}>
+                            {this.state.dateFormatted}
+                        </Tooltip>
                     </CardFooter>
                 </Card>
             </div>
