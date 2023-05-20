@@ -4,12 +4,11 @@ import { Home } from "./components/Home";
 import { Feed } from "./components/Feed.js";
 import { MakePost } from "./components/MakePost.js";
 import { ViewPost } from "./components/ViewPost";
-import { PostData } from "./components/PostData.js";
 
 const AppRoutes = [
   {
     index: true,
-    element: <Home />
+    element: <Feed />
   },
   {
     path: '/counter',

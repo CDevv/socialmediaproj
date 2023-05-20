@@ -4,7 +4,6 @@ const URL = 'https://redapi-15da.restdb.io/rest/posts';
 const KEY = env.API_KEY;
 
 export function getData() {
-    console.log(KEY);
     return fetch(URL, {
         method: 'GET',
         headers: {
